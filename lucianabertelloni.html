@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciana Bertelloni</title>
+    
+    <!-- Importiamo il font romano (Cinzel) da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 55px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .sottotitoli {
+            font-family: 'Cinzel', serif;
+            font-size: 50px;
+            color: #2c314a;
+            margin-bottom: 10px; /* Uniformato a quello di Gino */
+        }
+
+        .corpo {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 30px; /* Uniformato a quello di Gino */
+        }
+
+        .pulsante {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 30px; /* Uniformato a quello di Gino */
+        }
+
+        /* Usiamo la classe 'foto' come nel secondo file per perfetta coerenza */
+        .foto {
+            width: 100%; 
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px; 
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .foto:hover {
+            transform: scale(1.02);
+        }
+
+        /* Griglia a 3 colonne */
+        .galleria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .elemento-galleria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Stile essenziale per la finestra modale */
+        dialog {
+            border: none;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 0;
+            max-width: 100vw;
+            max-height: 100vh;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        dialog[open] {
+            display: flex;
+        }
+
+        dialog img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .galleria {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Luciana Bertelloni</h1>
+
+    <p class="sottotitoli">
+        Biografia
+    </p>
+
+    <p class="corpo" style="max-width: 850px; margin-left: auto; margin-right: auto; text-align: justify; padding: 0 20px;">
+        Biografia nonna
+    </p>
+
+    <p class="sottotitoli" style="margin-top: 50px;">
+        Produzione artistica
+    </p>
+
+    <!-- Contenitore della griglia -->
+    <div class="galleria">
+        {% for foto in foto_list %}
+            <div class="elemento-galleria">
+                <div>
+                    <img src="{{ url_for('static', filename='luciana/opere/' + foto) }}" 
+                         alt="Foto di Luciana" 
+                         class="foto"
+                         onclick="document.getElementById('modal-{{ loop.index }}').showModal()">
+                </div>
+
+                <div class="corpo">
+                    {{ loop.index }}. {{ foto.rsplit('.', 1)[0] }}
+                </div>
+
+                <!-- Finestra modale -->
+                <dialog id="modal-{{ loop.index }}" onclick="this.close()">
+                    <img src="{{ url_for('static', filename='luciana/opere/' + foto) }}" alt="Foto ingrandita">
+                </dialog>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p style="margin-top: 50px;">
+        <a href="{{ url_for('home') }}">
+            <button type="button" class="pulsante" style="padding: 10px 20px; cursor: pointer;">Torna alla Home</button>
+        </a>
+    </p>
+
+</body>
+</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luciana Bertelloni</title>
+    
+    <!-- Importiamo il font romano (Cinzel) da Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 55px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .sottotitoli {
+            font-family: 'Cinzel', serif;
+            font-size: 50px;
+            color: #2c314a;
+            margin-bottom: 50px;
+        }
+
+        .corpo {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        .pulsante {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+        }
+
+        .foto-profilo {
+            width: 100%; 
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px; 
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .foto-profilo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Griglia a 3 colonne */
+        .galleria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .elemento-galleria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Stile essenziale per la finestra modale */
+        dialog {
+            border: none;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 0;
+            max-width: 100vw;
+            max-height: 100vh;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        dialog[open] {
+            display: flex;
+        }
+
+        dialog img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .galleria {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Luciana Bertelloni</h1>
+
+    <p class="sottotitoli">
+        Biografia
+    </p>
+
+    <p class="corpo" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        Biografia nonna
+    </p>
+
+    <p class="sottotitoli" style="margin-top: 60px;">
+        Produzione artistica
+    </p>
+
+    <!--GALLERY_START-->
+<div class="galleria">
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/esercizio. motivo religioso.JPG" 
+                 alt="Esercizio. motivo religioso" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-1').showModal()">
+        </div>
+        <div class="titolo-foto">Esercizio. motivo religioso</div>
+        <dialog id="modal-1" onclick="this.close()">
+            <img src="static/gino/opere/esercizio. motivo religioso.JPG" alt="Esercizio. motivo religioso ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/esercizio. nudo di donna.JPG" 
+                 alt="Esercizio. nudo di donna" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-2').showModal()">
+        </div>
+        <div class="titolo-foto">Esercizio. nudo di donna</div>
+        <dialog id="modal-2" onclick="this.close()">
+            <img src="static/gino/opere/esercizio. nudo di donna.JPG" alt="Esercizio. nudo di donna ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/fiori. bouquet di fiori bianchi.JPG" 
+                 alt="Fiori. bouquet di fiori bianchi" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-3').showModal()">
+        </div>
+        <div class="titolo-foto">Fiori. bouquet di fiori bianchi</div>
+        <dialog id="modal-3" onclick="this.close()">
+            <img src="static/gino/opere/fiori. bouquet di fiori bianchi.JPG" alt="Fiori. bouquet di fiori bianchi ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/fiori. bouquet di stelle alpine.JPG" 
+                 alt="Fiori. bouquet di stelle alpine" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-4').showModal()">
+        </div>
+        <div class="titolo-foto">Fiori. bouquet di stelle alpine</div>
+        <dialog id="modal-4" onclick="this.close()">
+            <img src="static/gino/opere/fiori. bouquet di stelle alpine.JPG" alt="Fiori. bouquet di stelle alpine ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/le ragazze di marrakech.JPG" 
+                 alt="Le ragazze di marrakech" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-5').showModal()">
+        </div>
+        <div class="titolo-foto">Le ragazze di marrakech</div>
+        <dialog id="modal-5" onclick="this.close()">
+            <img src="static/gino/opere/le ragazze di marrakech.JPG" alt="Le ragazze di marrakech ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/nudo di donna con mandolino.jpg" 
+                 alt="Nudo di donna con mandolino" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-6').showModal()">
+        </div>
+        <div class="titolo-foto">Nudo di donna con mandolino</div>
+        <dialog id="modal-6" onclick="this.close()">
+            <img src="static/gino/opere/nudo di donna con mandolino.jpg" alt="Nudo di donna con mandolino ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/nudo di donna. vista di tergo.JPG" 
+                 alt="Nudo di donna. vista di tergo" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-7').showModal()">
+        </div>
+        <div class="titolo-foto">Nudo di donna. vista di tergo</div>
+        <dialog id="modal-7" onclick="this.close()">
+            <img src="static/gino/opere/nudo di donna. vista di tergo.JPG" alt="Nudo di donna. vista di tergo ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/nudo di donna.JPG" 
+                 alt="Nudo di donna" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-8').showModal()">
+        </div>
+        <div class="titolo-foto">Nudo di donna</div>
+        <dialog id="modal-8" onclick="this.close()">
+            <img src="static/gino/opere/nudo di donna.JPG" alt="Nudo di donna ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/nudo di una giovane.JPG" 
+                 alt="Nudo di una giovane" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-9').showModal()">
+        </div>
+        <div class="titolo-foto">Nudo di una giovane</div>
+        <dialog id="modal-9" onclick="this.close()">
+            <img src="static/gino/opere/nudo di una giovane.JPG" alt="Nudo di una giovane ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio autunnale.jpg" 
+                 alt="Paesaggio autunnale" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-10').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio autunnale</div>
+        <dialog id="modal-10" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio autunnale.jpg" alt="Paesaggio autunnale ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio con albero.JPG" 
+                 alt="Paesaggio con albero" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-11').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio con albero</div>
+        <dialog id="modal-11" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio con albero.JPG" alt="Paesaggio con albero ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio con riflessi su un lago.JPG" 
+                 alt="Paesaggio con riflessi su un lago" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-12').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio con riflessi su un lago</div>
+        <dialog id="modal-12" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio con riflessi su un lago.JPG" alt="Paesaggio con riflessi su un lago ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio di campagna con casale.JPG" 
+                 alt="Paesaggio di campagna con casale" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-13').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio di campagna con casale</div>
+        <dialog id="modal-13" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio di campagna con casale.JPG" alt="Paesaggio di campagna con casale ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio di campagna.JPG" 
+                 alt="Paesaggio di campagna" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-14').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio di campagna</div>
+        <dialog id="modal-14" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio di campagna.JPG" alt="Paesaggio di campagna ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio fiabesco.JPG" 
+                 alt="Paesaggio fiabesco" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-15').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio fiabesco</div>
+        <dialog id="modal-15" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio fiabesco.JPG" alt="Paesaggio fiabesco ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio invernale.jpg" 
+                 alt="Paesaggio invernale" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-16').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio invernale</div>
+        <dialog id="modal-16" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio invernale.jpg" alt="Paesaggio invernale ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio notturno.JPG" 
+                 alt="Paesaggio notturno" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-17').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio notturno</div>
+        <dialog id="modal-17" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio notturno.JPG" alt="Paesaggio notturno ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio trevigiano.jpg" 
+                 alt="Paesaggio trevigiano" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-18').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio trevigiano</div>
+        <dialog id="modal-18" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio trevigiano.jpg" alt="Paesaggio trevigiano ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio veneziano con canale.JPG" 
+                 alt="Paesaggio veneziano con canale" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-19').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio veneziano con canale</div>
+        <dialog id="modal-19" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio veneziano con canale.JPG" alt="Paesaggio veneziano con canale ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/paesaggio veneziano con santa maria della salute.JPG" 
+                 alt="Paesaggio veneziano con santa maria della salute" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-20').showModal()">
+        </div>
+        <div class="titolo-foto">Paesaggio veneziano con santa maria della salute</div>
+        <dialog id="modal-20" onclick="this.close()">
+            <img src="static/gino/opere/paesaggio veneziano con santa maria della salute.JPG" alt="Paesaggio veneziano con santa maria della salute ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di donna all'uncinetto.JPG" 
+                 alt="Ritratto di donna all'uncinetto" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-21').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di donna all'uncinetto</div>
+        <dialog id="modal-21" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di donna all'uncinetto.JPG" alt="Ritratto di donna all'uncinetto ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di donna di profilo.JPG" 
+                 alt="Ritratto di donna di profilo" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-22').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di donna di profilo</div>
+        <dialog id="modal-22" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di donna di profilo.JPG" alt="Ritratto di donna di profilo ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di donna.jpg" 
+                 alt="Ritratto di donna" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-23').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di donna</div>
+        <dialog id="modal-23" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di donna.jpg" alt="Ritratto di donna ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di un giovane dormiente.JPG" 
+                 alt="Ritratto di un giovane dormiente" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-24').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di un giovane dormiente</div>
+        <dialog id="modal-24" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di un giovane dormiente.JPG" alt="Ritratto di un giovane dormiente ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di un nipote, francesco.jpg" 
+                 alt="Ritratto di un nipote, francesco" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-25').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di un nipote, francesco</div>
+        <dialog id="modal-25" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di un nipote, francesco.jpg" alt="Ritratto di un nipote, francesco ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto di una giovane.JPG" 
+                 alt="Ritratto di una giovane" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-26').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto di una giovane</div>
+        <dialog id="modal-26" onclick="this.close()">
+            <img src="static/gino/opere/ritratto di una giovane.JPG" alt="Ritratto di una giovane ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/ritratto femminile.jpg" 
+                 alt="Ritratto femminile" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-27').showModal()">
+        </div>
+        <div class="titolo-foto">Ritratto femminile</div>
+        <dialog id="modal-27" onclick="this.close()">
+            <img src="static/gino/opere/ritratto femminile.jpg" alt="Ritratto femminile ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/uva fragola.JPG" 
+                 alt="Uva fragola" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-28').showModal()">
+        </div>
+        <div class="titolo-foto">Uva fragola</div>
+        <dialog id="modal-28" onclick="this.close()">
+            <img src="static/gino/opere/uva fragola.JPG" alt="Uva fragola ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/veduta di orvieto.JPG" 
+                 alt="Veduta di orvieto" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-29').showModal()">
+        </div>
+        <div class="titolo-foto">Veduta di orvieto</div>
+        <dialog id="modal-29" onclick="this.close()">
+            <img src="static/gino/opere/veduta di orvieto.JPG" alt="Veduta di orvieto ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/veduta di piazza san marco.JPG" 
+                 alt="Veduta di piazza san marco" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-30').showModal()">
+        </div>
+        <div class="titolo-foto">Veduta di piazza san marco</div>
+        <dialog id="modal-30" onclick="this.close()">
+            <img src="static/gino/opere/veduta di piazza san marco.JPG" alt="Veduta di piazza san marco ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/veliero in burrasca.jpg" 
+                 alt="Veliero in burrasca" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-31').showModal()">
+        </div>
+        <div class="titolo-foto">Veliero in burrasca</div>
+        <dialog id="modal-31" onclick="this.close()">
+            <img src="static/gino/opere/veliero in burrasca.jpg" alt="Veliero in burrasca ingrandita">
+        </dialog>
+    </div>
+</div>
+<!--GALLERY_END-->>
+
+    <p style="margin-top: 50px;">
+        <a href="{{ url_for('home') }}">
+            <button type="button" class="pulsante" style="padding: 10px 20px; cursor: pointer;">Torna alla Home</button>
+        </a>
+    </p>
+
+</body>
+</html>

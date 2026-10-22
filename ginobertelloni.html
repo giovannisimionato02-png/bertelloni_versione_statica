@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gino Bertelloni</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(28px, 6vw, 55px);
+            font-weight: 600;
+            color: #000000;
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+
+        .sottotitoli {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(24px, 5vw, 50px);
+            color: #2c314a;
+            margin-bottom: 10px;
+        }
+
+        .corpo {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        .titolo-foto {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: #000000;
+            margin-top: 15px;
+        }
+
+        .pulsante {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 30px;
+        }
+
+        /* Regole stilistiche per tutte le foto della galleria */
+        .foto, .foto-profilo {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px; 
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .foto:hover, .foto-profilo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Griglia principale per le opere */
+        .galleria {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Griglia a 3 colonne per le foto storiche */
+        .galleria-storia {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 20px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .elemento-galleria {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Stili della finestra modale <dialog> */
+        dialog {
+            border: none;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 0;
+            max-width: 100vw;
+            max-height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+        dialog[open] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        dialog img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .galleria, .galleria-storia {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gino Bertelloni</h1>
+
+    <div>
+        <img src="static/gino/fotogino.jpg" alt="Foto di Gino" class="foto" onclick="document.getElementById('modal-ritratto').showModal()">
+    </div>
+
+    <!-- Modale per il ritratto principale -->
+    <dialog id="modal-ritratto" onclick="if (event.target === this) this.close()">
+        <img src="static/gino/fotogino.jpg" alt="Foto di Gino ingrandita">
+    </dialog>
+
+    <p class="sottotitoli">
+        Biografia
+    </p>
+
+    <p class="corpo" style="max-width: 850px; margin-left: auto; margin-right: auto; text-align: justify; padding: 0 20px;">
+        Nato a Massa Carrara il 20 agosto 1893, fin da bambino dimostrò attitudine per il disegno e la scultura, passione che poté coltivare iscrivendosi all'Accademia di Belle Arti, prima a Massa, poi a Firenze. Qui si diplomò in disegno e scultura, meritandosi anche la medaglia d'oro.  <br><br>
+        Poiché Massa è vicina a Carrara, Bertelloni si trovò nell'ambiente giusto per trattare il marmo. Infatti si recò per alcuni anni tra le cave di marmo dove apprese concretamente i segreti del mestiere.  <br><br>
+        Lavorò dapprima in équipe e le opere realizzate su richieste di singoli acquirenti ne raffinarono la tecnica e ne misero in evidenza l'indole artistica. <br><br>
+        Allo scoppio della guerra del 1915-18 dovette interrompere la sua attività.  <br><br>
+        Chiusa la triste parentesi bellica, durante una visita nel Veneto a dei parenti, incontrò colei che divenne sua moglie, Serafina Carlesso.  <br><br>
+        Stabilitosi dapprima a Firenze, poi a Pietrasanta per impegni di lavoro, infine, anche per accondiscendere ai desideri della moglie, decise di trasferirsi a Noale, storica cittadina veneziana.   <br><br>
+        Prese casa in pieno centro storico, adiacente la Torre delle Campane, dove aprì studio e laboratorio, iniziando un'attività creativa che continuò per anni intensa e fortunata per i tanti riconoscimenti ricevuti.  <br><br>
+        Produsse allora opere di grande impegno, su ordinazione sia di enti pubblici, sia di privati: nacquero così sculture in marmo anche di notevololi dimensioni, di carattere celebrativo, civile e religioso: statue, bassorilievi, busti, gruppi marmorei, monumenti. <br><br>
+        Gino Bertelloni, poi, non si negava a nessuna richiesta di incarichi e commissioni, come non si rifiutava di tenere corsi di disegno geometrico e libero, meritandosi la nomina di "Cavaliere del Lavoro". <br><br>
+        Chi l'ha conosciuto lo ricorda come persona estroversa, comunicativa e al tempo stesso piena di slancio e determinazione. <br><br>
+        Quando si rese conto che nelle varie commissioni che riceveva il "commerciale" soppiantava ormai i contenuti artistici, gli vennero a mancare gli stimoli di un tempo. Ridusse sempre più i suoi impegni, anche perché nel frattempo gli si affievolirono le forze fisiche. <br><br>
+        Si spense a Noale il 15 Luglio del 1962 a 68 anni. 
+    </p>
+
+    <!-- Griglia a 3 per le foto storiche -->
+    <div class="galleria-storia">
+        
+        <!-- Foto 1 -->
+        <div class="elemento-galleria">
+            <div>
+                <img src="static/gino/gino%20bertelloni%20presso%20la%20scuola%20di%20carrara.%201922.jpg" 
+                     alt="Gino Bertelloni presso la scuola di Carrara, 1922" 
+                     class="foto" 
+                     onclick="document.getElementById('modal-storia-1').showModal()">
+            </div>
+            <div class="titolo-foto">
+                Gino Bertelloni presso la scuola di Carrara. 1922
+            </div>
+            <dialog id="modal-storia-1" onclick="if (event.target === this) this.close()">
+                <img src="static/gino/gino%20bertelloni%20presso%20la%20scuola%20di%20carrara.%201922.jpg" alt="Gino Bertelloni presso la scuola di Carrara, 1922 - Ingrandimento">
+            </dialog>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="elemento-galleria">
+            <div>
+                <img src="static/gino/a%20sinistra,%20gino%20bertelloni%20con%20alcuni%20amici%20scultori.jpg" 
+                     alt="A sinistra, Gino Bertelloni con alcuni amici scultori" 
+                     class="foto" 
+                     onclick="document.getElementById('modal-storia-2').showModal()">
+            </div>
+            <div class="titolo-foto">
+                A sinistra, Gino Bertelloni con alcuni amici scultori
+            </div>
+            <dialog id="modal-storia-2" onclick="if (event.target === this) this.close()">
+                <img src="static/gino/a%20sinistra,%20gino%20bertelloni%20con%20alcuni%20amici%20scultori.jpg" alt="A sinistra, Gino Bertelloni con alcuni amici scultori - Ingrandimento">
+            </dialog>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="elemento-galleria">
+            <div>
+                <img src="static/gino/gino%20bertelloni.%201960.jpg" 
+                     alt="Gino Bertelloni, 1960" 
+                     class="foto" 
+                     onclick="document.getElementById('modal-storia-3').showModal()">
+            </div>
+            <div class="titolo-foto">
+                Gino Bertelloni. 1960
+            </div>
+            <dialog id="modal-storia-3" onclick="if (event.target === this) this.close()">
+                <img src="static/gino/gino%20bertelloni.%201960.jpg" alt="Gino Bertelloni, 1960 - Ingrandimento">
+            </dialog>
+        </div>
+
+    </div>
+
+    <p class="sottotitoli" style="margin-top: 50px;">
+        Produzione artistica
+    </p>
+
+    <!--GALLERY_START-->
+<div class="galleria">
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/busto di p.f. calvi.jpg" 
+                 alt="Busto di p.f. calvi" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-1').showModal()">
+        </div>
+        <div class="titolo-foto">Busto di p.f. calvi</div>
+        <dialog id="modal-1" onclick="this.close()">
+            <img src="static/gino/opere/busto di p.f. calvi.jpg" alt="Busto di p.f. calvi ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/lapide a p.f. calvi.jpg" 
+                 alt="Lapide a p.f. calvi" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-2').showModal()">
+        </div>
+        <div class="titolo-foto">Lapide a p.f. calvi</div>
+        <dialog id="modal-2" onclick="this.close()">
+            <img src="static/gino/opere/lapide a p.f. calvi.jpg" alt="Lapide a p.f. calvi ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/medaglioni marmorei dei coniugi spangaro, benefattori dell'asilo di peseggia.jpg" 
+                 alt="Medaglioni marmorei dei coniugi spangaro, benefattori dell'asilo di peseggia" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-3').showModal()">
+        </div>
+        <div class="titolo-foto">Medaglioni marmorei dei coniugi spangaro, benefattori dell'asilo di peseggia</div>
+        <dialog id="modal-3" onclick="this.close()">
+            <img src="static/gino/opere/medaglioni marmorei dei coniugi spangaro, benefattori dell'asilo di peseggia.jpg" alt="Medaglioni marmorei dei coniugi spangaro, benefattori dell'asilo di peseggia ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento 'statua della libertà' presso il cimitero di mirano.jpg" 
+                 alt="Monumento 'statua della libertà' presso il cimitero di mirano" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-4').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento 'statua della libertà' presso il cimitero di mirano</div>
+        <dialog id="modal-4" onclick="this.close()">
+            <img src="static/gino/opere/monumento 'statua della libertà' presso il cimitero di mirano.jpg" alt="Monumento 'statua della libertà' presso il cimitero di mirano ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento a san giuseppe.jpg" 
+                 alt="Monumento a san giuseppe" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-5').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento a san giuseppe</div>
+        <dialog id="modal-5" onclick="this.close()">
+            <img src="static/gino/opere/monumento a san giuseppe.jpg" alt="Monumento a san giuseppe ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento a sant'antonio.jpg" 
+                 alt="Monumento a sant'antonio" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-6').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento a sant'antonio</div>
+        <dialog id="modal-6" onclick="this.close()">
+            <img src="static/gino/opere/monumento a sant'antonio.jpg" alt="Monumento a sant'antonio ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento ai caduti presso il cimetro di mirano.jpg" 
+                 alt="Monumento ai caduti presso il cimetro di mirano" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-7').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento ai caduti presso il cimetro di mirano</div>
+        <dialog id="modal-7" onclick="this.close()">
+            <img src="static/gino/opere/monumento ai caduti presso il cimetro di mirano.jpg" alt="Monumento ai caduti presso il cimetro di mirano ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento alla fortezza presso l'asilo di spinea.jpg" 
+                 alt="Monumento alla fortezza presso l'asilo di spinea" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-8').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento alla fortezza presso l'asilo di spinea</div>
+        <dialog id="modal-8" onclick="this.close()">
+            <img src="static/gino/opere/monumento alla fortezza presso l'asilo di spinea.jpg" alt="Monumento alla fortezza presso l'asilo di spinea ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento alla giustizia presso asilo di spinea.jpg" 
+                 alt="Monumento alla giustizia presso asilo di spinea" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-9').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento alla giustizia presso asilo di spinea</div>
+        <dialog id="modal-9" onclick="this.close()">
+            <img src="static/gino/opere/monumento alla giustizia presso asilo di spinea.jpg" alt="Monumento alla giustizia presso asilo di spinea ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento alla madonna presso via vernice.jpg" 
+                 alt="Monumento alla madonna presso via vernice" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-10').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento alla madonna presso via vernice</div>
+        <dialog id="modal-10" onclick="this.close()">
+            <img src="static/gino/opere/monumento alla madonna presso via vernice.jpg" alt="Monumento alla madonna presso via vernice ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento alla prudenza presso asilo di spinea.jpg" 
+                 alt="Monumento alla prudenza presso asilo di spinea" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-11').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento alla prudenza presso asilo di spinea</div>
+        <dialog id="modal-11" onclick="this.close()">
+            <img src="static/gino/opere/monumento alla prudenza presso asilo di spinea.jpg" alt="Monumento alla prudenza presso asilo di spinea ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/monumento alla temperanza presso asilo di spinea.jpg" 
+                 alt="Monumento alla temperanza presso asilo di spinea" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-12').showModal()">
+        </div>
+        <div class="titolo-foto">Monumento alla temperanza presso asilo di spinea</div>
+        <dialog id="modal-12" onclick="this.close()">
+            <img src="static/gino/opere/monumento alla temperanza presso asilo di spinea.jpg" alt="Monumento alla temperanza presso asilo di spinea ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/statua di una madonna piangente presso il cimitero di mirano.jpg" 
+                 alt="Statua di una madonna piangente presso il cimitero di mirano" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-13').showModal()">
+        </div>
+        <div class="titolo-foto">Statua di una madonna piangente presso il cimitero di mirano</div>
+        <dialog id="modal-13" onclick="this.close()">
+            <img src="static/gino/opere/statua di una madonna piangente presso il cimitero di mirano.jpg" alt="Statua di una madonna piangente presso il cimitero di mirano ingrandita">
+        </dialog>
+    </div>
+    <div class="elemento-galleria">
+        <div>
+            <img src="static/gino/opere/tomba della famiglia bolzonella presso il cimitero di mirano.jpg" 
+                 alt="Tomba della famiglia bolzonella presso il cimitero di mirano" 
+                 class="foto-profilo"
+                 onclick="document.getElementById('modal-14').showModal()">
+        </div>
+        <div class="titolo-foto">Tomba della famiglia bolzonella presso il cimitero di mirano</div>
+        <dialog id="modal-14" onclick="this.close()">
+            <img src="static/gino/opere/tomba della famiglia bolzonella presso il cimitero di mirano.jpg" alt="Tomba della famiglia bolzonella presso il cimitero di mirano ingrandita">
+        </dialog>
+    </div>
+</div>
+<!--GALLERY_END-->
+
+    <p style="margin-top: 50px;">
+        <a href="{{ url_for('home') }}">
+            <button type="button" class="pulsante" style="padding: 10px 20px; cursor: pointer;">Torna alla Home</button>
+        </a>
+    </p>
+
+</body>
+</html>

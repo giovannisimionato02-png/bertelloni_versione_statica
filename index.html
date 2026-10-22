@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mio Sito Python</title>
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px 15px; /* Margini sicuri per schermi piccoli */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(32px, 8vw, 55px); /* Dimensione dinamica: evita che vada a capo male su mobile */
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        /* Stile per la linea divisoria */
+        .divisore {
+            width: 80px;
+            height: 2px;
+            background-color: #2c314a;
+            margin: 0 auto 20px auto;
+            border: none;
+        }
+
+        .sottotitolo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(20px, 5vw, 30px);
+            color: #2c314a;
+            margin-bottom: 35px;
+        }
+
+        .corpo {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        /* Contenitore per allineare la firma a destra in linea con la larghezza del testo */
+        .contenitore-firme {
+            max-width: 850px;
+            margin: 0 auto 35px auto;
+            padding: 0 10px;
+            text-align: right;
+        }
+
+        .firme-famiglie {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: #2c314a;
+            font-style: italic;
+        }
+
+        /* Pulsante rifinito per evitare problemi di annidamento */
+        .pulsante {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: #000000;
+            background-color: #ffffff;
+            border: 1px solid #2c314a;
+            padding: 12px 25px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s;
+            border-radius: 4px;
+        }
+
+        .pulsante:hover {
+            background-color: #2c314a;
+            color: #ffffff;
+        }
+
+        /* Stile per distanziare i bottoni in verticale */
+        .blocco-pulsante {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gino e Luciana Bertelloni</h1>
+    
+    <!-- Linea divisoria -->
+    <hr class="divisore">
+
+    <p class="sottotitolo">
+        Padre e figlia
+    </p>
+
+    <p class="corpo" style="max-width: 850px; margin-left: auto; margin-right: auto; text-align: justify; padding: 0 15px;">
+        Curare una raccolta alla memoria di Gino Bertelloni (20 agosto 1893 - 15 Luglio 1962) è un atto dovuto alla grande Opera che ci ha lasciato. <br><br>
+        È una necessità, che noi, nipoti e pronipoti, sentiamo, affinchè si possa dare un nome alla mano che ha dato alla luce molte
+        delle sculture che abitano il cimitero di Noale, che danno un volto ai nostri defunti, ma anche a personaggi illustri, 
+        come PierFortunato Calvi. <br><br>
+        Inoltre, ci è sembrato naturale accostare alla sua produzione, l'Opera pittorica della figlia Luciana (15 luglio 1936).
+    </p>
+
+    <!-- Famiglie in basso a destra rispetto al blocco del testo, prima dei pulsanti -->
+    <div class="contenitore-firme">
+        <span class="firme-famiglie">Famiglie Simionato e Spadotto</span>
+    </div>
+
+    <!-- Primo pulsante in verticale -->
+    <div class="blocco-pulsante">
+        <a href="{{ url_for('ginobertelloni') }}" class="pulsante">Gino Bertelloni</a>
+    </div>
+
+    <!-- Secondo pulsante in verticale -->
+    <div class="blocco-pulsante">
+        <a href="{{ url_for('lucianabertelloni') }}" class="pulsante">Luciana Bertelloni</a>
+    </div>
+
+</body>
+</html>
